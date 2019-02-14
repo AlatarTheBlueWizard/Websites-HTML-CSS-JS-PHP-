@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Javascript Purchase Form</title>
+    <style>
+        body {
+            /*background-color: darkorange;*/
+            background-image: linear-gradient(to right, red, yellow);
+        }
 
+        .formfield * {
+            vertical-align: middle;
+        }
+
+        table.checkTable {
+            border: 1px solid black;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: lightcoral;
+        }
+
+        form {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            border-radius: 5px;
+            border: 2px solid black;
+            background-color: lightgray;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: Helvetica;
+        }
+
+        h3 {
+            font-family: Helvetica;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("n").focus();
+        };
+
+        function getFocus() {
+            document.getElementById("n").focus();
+        }
+
+        function validateForm() {
+            var x = document.getElementById("n").value;
+            var y = document.getElementById("ln").value;
+            var z = document.getElementById("textarea").value;
+            var p = document.getElementById("num").value;
+            var cN = document.getElementById("cc").value;
+            var cE = document.getElementById("cce").value;
+            if (x === "") {
+                document.getElementById("div1").innerHTML = "*First name must be filled out";
+                document.getElementById("div1").style.color = "Red";
+                return false;
+            } else if (y === "") {
+                document.getElementById("div2").innerHTML = "*Last name must be filled out";
+                document.getElementById("div2").style.color = "Red";
+                return false;
+            } else if (z === "") {
+                document.getElementById("div3").innerHTML = "*Address must be filled out";
+                document.getElementById("div3").style.color = "Red";
+                return false;
+            } else if (p === "") {
+                document.getElementById("div4").innerHTML = "*Phone number must be filled out";
+                document.getElementById("div4").style.color = "Red";
+                return false;
+            } else if (cN === "") {
+                document.getElementById("div5").innerHTML = "*Card number must be filled out";
+                document.getElementById("div5").style.color = "Red";
+                return false;
+            } else if (cE === "") {
+                document.getElementById("div6").innerHTML = "*Expiration date must be filled out";
+                document.getElementById("div6").style.color = "Red";
+                return false;
+            }
+        }
+
+        function phoneValidation(input) {
+            var phone = /^\d{3}-\d{3}-\d{4}$/;
+            if (input.value.match(phone)) {
+                return true;
+            } else {
+                document.getElementById("div4").innerHTML = "*Phone number must be 10 digits and be in format 123-456-7890";
+                document.getElementById("div4").style.color = "Red";
+                return false;
+            }
+        }
+
+        var totalAmount = 0;
+        function total(item) {
+            if (item.checked) {
+                totalAmount += parseInt(item.value);
+            } else {
+                totalAmount -= parseInt(item.value);
+            }
+            document.getElementById('t').innerHTML = "$" + totalAmount;
+        }
+
+        function validateCreditCard(input) {
+            var card = /^\d{16}$/;
+            if (input.value.match(card)) {
+                return true;
+            } else {
+                document.getElementById("div5").innerHTML = "*Card number must be 16 digits";
+                document.getElementById("div5").style.color = "Red";
+                return false;
+            }
+        }
+
+        function resetValidation() {
+            document.getElementById("div1").innerHTML = "";
+            document.getElementById("div2").innerHTML = "";
+            document.getElementById("div3").innerHTML = "";
+            document.getElementById("div4").innerHTML = "";
+            document.getElementById("div5").innerHTML = "";
+            document.getElementById("div6").innerHTML = "";
+        }
+
+        function cardYear(year) {
+            var yearsAhead = 20;
+            if (year < 100) {
+                var currentYear = new Date().getFullYear();
+                year += Math.floor(currentYear / 100) * 100;
+                if (year > currentYear + yearsAhead) {
+                    year -= 100;
+                } else if (year <= currentYear - 100 + yearsAhead) {
+                    year += 100;
+                }
+            }
+            return year;
+        }
+
+        function checkExpiration(input) {
+            var match = /^\s*(0?[1-9]|1[0-2])\/(\d\d|\d{4})\s*$/;
+            if (input.value.match(match)) {
+                return true;
+            } else {
+                document.getElementById("div6").innerHTML = "*Card date not formatted correctly";
+                document.getElementById("div6").style.color = "Red";
+                return false;
+            }
+            var input = new Date(cardYear(1 * match[2]), 1 * match[1] - 1, 1).valueOf();
+            var now = new Date();
+            var currentMonth = new Date(now.getFullYear(), now.getMonth(), 1).valueOf();
+            if (input <= currentMonth) {
+                document.getElementById("div6").innerHTML = "*Card date is expired";
+                document.getElementById("div6").style.color = "Red";
+                return false;
+            } 
+        }
+    </script>
+</head>
+<body>
+    <h1>Purchase Form</h1>
+    <form name="myForm" action="" onsubmit="return phoneValidation(document.myForm.number) && validateCreditCard(document.myForm.cNum) && checkExpiration(document.myForm.cExp)" onreset="resetValidation()">
+        <br/>
+        <label>
+            First Name: <br/>
+            <input type="text" id="n" name="fName"  />
+        </label><br /> <div id="div1"></div>
+        <label>
+            Last Name: <br/>
+            <input type="text" id="ln" name="lName" />
+        </label><br /> <div id="div2"></div>
+        <p class="formfield">
+            <label for="textarea">
+                Address: <br/>
+                <textarea id="textarea" rows="2" cols="50" placeholder="street address, city, state, and zip" name="text"></textarea>
+            </label> <div id="div3"></div>
+        </p>
+        <label>
+            Phone: <br/>
+            <input type="text" id="num" name="number" placeholder="ex: 123-456-7890" />
+        </label> <div id="div4"></div>
+        <h3>Items available for purchase</h3>
+        <table class="checkTable">
+            <tr>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)"/><strong>Magnets ($5.00)</strong></td>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /><strong>Hat ($5.00)</strong></td>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /><strong>Speaker ($5.00)</strong></td>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /><strong>Soda ($5.00)</strong></td>
+            </tr>
+        </table>
+        <br />
+        Total: <span id='t'></span>
+        <h3>Credit card type</h3>
+        <label>Visa<input type="radio" id="radi" name="credit" /></label>
+        <label>Mastercard<input type="radio" id="ra" name="credit" /></label>
+        <label>American Express<input type="radio" id="rad" name="credit" /></label><br /><br />
+        <label>Credit card number: <br/> <input type="text" id="cc" name="cNum" placeholder="################" /></label><div id="div5"></div><br/>
+        <label>Credit card expiration date: <br/> <input type="text" id="cce" name="cExp" placeholder="MM/YYYY"/></label><div id="div6"></div> 
+        <br /><br />
+        <input type="reset" id="res" name="reset" onclick="getFocus()"/> 
+        <input type="submit" id="sub" name="submit" onclick="return validateForm()"/> 
+    </form>
+    <br/>
+</body>
+</html>
