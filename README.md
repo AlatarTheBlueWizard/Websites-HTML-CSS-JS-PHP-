@@ -1,2 +1,2 @@
-# Websites-HTML-CSS-JS-PHP-
+# Websites (HTML-CSS-JS-PHP)
 A collection of websites I have created.
