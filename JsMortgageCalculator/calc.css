@@ -1,1 +1,15 @@
+h1 {
+	text-align: center;
+	font-family: Helvetica;
+	color: blue;
+}
 
+form {
+	text-align: center;
+	background-color: skyblue;
+	width: 350px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	border: 2px solid black;
+}
