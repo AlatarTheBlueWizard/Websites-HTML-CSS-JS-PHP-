@@ -37,6 +37,10 @@
         h3 {
             font-family: Helvetica;
         }
+
+        .checkTable tr, td, th {
+            border: 1px solid black;
+        }
     </style>
     <script type="text/javascript">
         window.onload = function () {
@@ -176,25 +180,44 @@
         </p>
         <label>
             Phone: <br/>
-            <input type="text" id="num" name="number" placeholder="ex: 123-456-7890" />
+            <input type="text" max="20" id="num" name="number" placeholder="ex: 123-456-7890" />
         </label> <div id="div4"></div>
         <h3>Items available for purchase</h3>
         <table class="checkTable">
             <tr>
-                <td><input type="checkbox" value="5" name="item1" onclick="total(this)"/><strong>Magnets ($5.00)</strong></td>
-                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /><strong>Hat ($5.00)</strong></td>
-                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /><strong>Speaker ($5.00)</strong></td>
-                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /><strong>Soda ($5.00)</strong></td>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Check to purchase</th>
+            </tr>
+            <tr>
+                <td>Magnets</td>
+                <td>$5.00</td>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /></td>
+            </tr>
+            <tr>
+                <td>Hat</td>
+                <td>$5.00</td>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /></td>
+            </tr>
+            <tr>
+                <td>Speaker</td>
+                <td>$5.00</td>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /></td>
+            </tr>
+            <tr>
+                <td>Soda</td>
+                <td>$5.00</td>
+                <td><input type="checkbox" value="5" name="item1" onclick="total(this)" /></td>
             </tr>
         </table>
         <br />
         Total: <span id='t'></span>
         <h3>Credit card type</h3>
-        <label>Visa<input type="radio" id="radi" name="credit" /></label>
-        <label>Mastercard<input type="radio" id="ra" name="credit" /></label>
-        <label>American Express<input type="radio" id="rad" name="credit" /></label><br /><br />
+        <label>Visa<input type="radio" id="r" name="credit" /></label>
+        <label>Mastercard<input type="radio" id="r" name="credit" /></label>
+        <label>American Express<input type="radio" id="r" name="credit" /></label><br /><br />
         <label>Credit card number: <br/> <input type="text" id="cc" name="cNum" placeholder="################" /></label><div id="div5"></div><br/>
-        <label>Credit card expiration date: <br/> <input type="text" id="cce" name="cExp" placeholder="MM/YYYY"/></label><div id="div6"></div> 
+        <label>Credit card expiration date: <br/> <input type="text" id="cce" name="cExp" placeholder="MM/YYYY"/></label><div id="div6"></div>
         <br /><br />
         <input type="reset" id="res" name="reset" onclick="getFocus()"/> 
         <input type="submit" id="sub" name="submit" onclick="return validateForm()"/> 
