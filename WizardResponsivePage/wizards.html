@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, intial-scale=1.0">
+		<title>The Five Wizards</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			.row::after {
+				content: "";
+				clear: both;
+				display: table;
+			}
+			
+			[class*="col-"] {
+				float: left;
+				padding: 15px;
+			}
+			
+			.col-1 {width: 8.33%;}
+			.col-2 {width: 16.66%;}
+			.col-3 {width: 25%;}
+			.col-4 {width: 33.33%;}
+			.col-5 {width: 41.66%;}
+			.col-6 {width: 50%;}
+			.col-7 {width: 58.33%;}
+			.col-8 {width: 66.66%;}
+			.col-9 {width: 75%;}
+			.col-10 {width: 83.33%;}
+			.col-11 {width: 91.66%;}
+			.col-12 {width: 100%;}
+			
+			html {
+				font-family: "Lucida Sans", sans-serif;
+			}
+			
+			.header {
+				background-color: gray;
+				color: #ffffff;
+				padding: 15px;
+			}
+			
+			.menu ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			
+			img {
+				width: 100%;
+				height: auto;
+				vertical-align: left;
+				border: 4px solid black;
+			}
+			
+			table, td, tr, th {
+				border: 2px solid black;
+			}
+			
+			body {
+				background: rgb(2,0,36);
+				background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(25,22,115,1) 12%, rgba(0,212,255,1) 100%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="header">
+			<h1 style="text-align:center;">The Five Wizards of Middle Earth</h1>
+		</div>
+		<div class="row">
+			<div class="col-3 menu">
+				<ul>
+					<li><img src="" alt="saruman"/></li>
+					<li><img src="" alt="Alatar"/></li>
+					<li><img src="" alt="Gandalf"/></li>
+					<li><img src="" alt="Radagast"/></li>
+					<li><img src="" alt="Pallando"/></li>
+				</ul>
+			</div>
+			<div class="col-9">
+				<h1>Description</h1>
+				<p><strong>These are the five blue wizards of Middle Earth.
+				   The wizards of Middle-earth were Maiar: spirits of 
+				   the same order as the Valar, but lesser in power.
+				   The first three of these five wizards were known in 
+				   the Mannish tongues of the Lord of the Rings series as 
+				   Saruman "man of skill" (Rohirric), Gandalf "elf of the staff" 
+				   (northern Men), and Radagast "tender of beasts" 
+				   (possibly Westron). Tolkien never provided non-Elvish names for 
+				   the other two; one tradition gives their names in Valinor as Alatar 
+				   and Pallando, and another as Morinehtar and Rómestámo in Middle-earth.
+				   Each wizard in the series had robes of a characteristic colour: white 
+				   for Saruman (the chief and the most powerful of the five), grey for Gandalf, 
+				   brown for Radagast, and sea-blue for Alatar and Pallando (known consequently 
+				   as the Blue Wizards or "Ithryn Luin").</strong></p>
+				<table>
+					<tr>
+						<th>Names (Top image to bottom)</th>
+						<th>Robe Color</th>
+						<th>Affiliation</th>
+					</tr>
+					<tr>
+						<td><strong>Saruman</strong></td>
+						<td>White</td>
+						<td>Sauron(Mordor)</td>
+					</tr>
+					<tr>
+						<td><strong>Alatar</strong></td>
+						<td>Blue</td>
+						<td>Men & Elves(Middle-Earth)</td>
+					</tr>
+					<tr>
+						<td><strong>Gandalf<strong></td>
+						<td>Gray</td>
+						<td>Men & Elves(Middle-Earth)</td>
+					</tr>
+					<tr>
+						<td><strong>Radagast</strong></td>
+						<td>Gray & Brown</td>
+						<td>Men, Beasts & Elves(Middle-Earth)</td>
+					</tr>
+					<tr>
+						<td><strong>Pallando</strong></td>
+						<td>Blue</td>
+						<td>Men & Elves(Middle-Earth)</td>
+					</tr>
+				</table>
+				<br/>
+				<img src="allfivewizardspic" alt="all five wizards"/>
+			</div>
+		</div>
+		<footer style="background-color:gray;text-align:center;">&copy;Wizards CO.</footer>
+	</body>
+</html>
